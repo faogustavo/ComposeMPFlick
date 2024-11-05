@@ -8,4 +8,4 @@ The problem already existed previously, but it was more noticeable/easier to rep
 
 A background with gradient/non-default-color background also makes the it easier to notice.
 
-Repro video: ![](./screen-recording.mp4)
+[Repro video](./screen-recording.mp4)
