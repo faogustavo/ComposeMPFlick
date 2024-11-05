@@ -2,18 +2,24 @@ import UIKit
 import SwiftUI
 import ComposeApp
 
-struct ComposeView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController()
+class ContentViewModel: ObservableObject {
+    @Published var vc: UIViewController?
+    func presentNewNav() {
+        let navController = UINavigationController()
+        navController.viewControllers = [MainViewControllerKt.MainViewController()]
+        vc?.present(navController, animated: true)
     }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
 struct ContentView: View {
+    @ObservedObject var viewModel: ContentViewModel = ContentViewModel()
+    
     var body: some View {
-        ComposeView()
-                .ignoresSafeArea(.keyboard) // Compose has own keyboard handler
+        VStack {
+            Button("Open Compose App") {
+                viewModel.presentNewNav()
+            }.padding()
+        }
     }
 }
 

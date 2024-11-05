@@ -12,7 +12,9 @@ import SwiftUI
 class SampleViewController: UIHostingController<ContentView> {
 
     init() {
-        super.init(rootView: ContentView())
+        let view = ContentView()
+        super.init(rootView: view)
+        view.viewModel.vc = self
     }
 
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
